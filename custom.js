@@ -846,48 +846,6 @@ $(document).ready(function () {
     setTimeout(init_template, 0);//Activating all the plugins
     
 
-    $(function(){
-      'use strict';
-      var options = {
-        prefetch: false,
-        cacheLength: 0,
-        blacklist: '.default-link',
-        forms: 'contactForm',
-        onStart: {
-          duration:600, // Duration of our animation
-          render: function ($container) {
-            // Add your CSS animation reversing class
-            $container.addClass('is-exiting');
-
-            // Restart your animation
-            smoothState.restartCSSAnimations();
-            $('.page-preloader').addClass('show-preloader');
-            $('#page-content, .landing-page').removeClass('show-containers');
-          }
-        },
-        onReady: {
-          duration: 0,
-          render: function ($container, $newContent) {
-            // Remove your CSS animation reversing class
-            $container.removeClass('is-exiting');
-
-            // Inject the new content
-            $container.html($newContent);
-            $('.page-preloader').addClass('show-preloader');
-            $('#page-content, .landing-page').removeClass('fadeIn');
-          }
-        },
-
-        onAfter: function($container, $newContent) {
-            setTimeout(init_template, 0)//Timeout required to properly initiate all JS Functions. 
-            $('.page-preloader').removeClass('show-preloader');
-            $('#page-content, .landing-page').addClass('fadeIn show-containers');
-			reloadjs()
-        }
-      };
-      var smoothState = $('#page-transitions').smoothState(options).data('smoothState');
-    });
-
     $('#page-content, .landing-page').addClass('fadeIn show-containers');
     
 });
